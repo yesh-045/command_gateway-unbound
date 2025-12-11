@@ -1,0 +1,43 @@
+[project]
+name = "cmd-gateway"
+version = "0.1.0"
+description = "command gateway for ai apps"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "yeshwanth", email = "yeshw537@gmail.com" }
+]
+keywords = ["fastapi", "backend"]
+classifiers = [
+    "Framework :: FastAPI",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+]
+
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.26",
+    "python-dotenv>=1.0",
+    "pydantic-settings>=2.0",
+    "sqlmodel>=0.0.16",
+    "aiosqlite>=0.19",
+    "typer>=0.12",
+    "rich>=13",
+    "httpx>=0.25",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.23",
+    "httpx>=0.25",
+]
+
+[project.scripts]
+gateway-api = "uvicorn.main:main"
+gateway-cli = "cli.main:run"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*", "cli*"]
